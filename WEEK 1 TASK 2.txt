@@ -13,6 +13,7 @@ public class ArrayIndex {
             System.out.println("Invalid Index");
         }
         sc.close();
+
     }
 }
 OUTPUT:
