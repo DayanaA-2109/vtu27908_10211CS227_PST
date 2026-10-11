@@ -1,0 +1,56 @@
+PROGRAM :
+
+import java.util.*;
+
+public class Solution {
+
+    public static String frequencySort(String s) {
+
+        int[] freq = new int[128];
+
+        
+        for (char c : s.toCharArray()) {
+            freq[c]++;
+        }
+
+       
+        Character[] chars = new Character[s.length()];
+
+        for (int i = 0; i < s.length(); i++) {
+            chars[i] = s.charAt(i);
+        }
+
+        
+        Arrays.sort(chars, (a, b) -> {
+            if (freq[a] != freq[b]) {
+                return freq[b] - freq[a];
+            }
+            return b - a;
+        });
+
+        
+        StringBuilder result = new StringBuilder();
+
+        for (char c : chars) {
+            result.append(c);
+        }
+
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.nextLine();
+
+        System.out.println(frequencySort(s));
+
+        sc.close();
+    }
+}
+
+OUTPUT :
+
+"tree"
+"eetr"
