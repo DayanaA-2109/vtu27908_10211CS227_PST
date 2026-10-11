@@ -1,0 +1,40 @@
+PROGRAM :
+
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        HashMap<Integer, Integer> marks = new HashMap<>();
+
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            int rollNumber = sc.nextInt();
+            int mark = sc.nextInt();
+            marks.put(rollNumber, mark);
+        }
+
+        int searchRoll = sc.nextInt();
+
+        if (marks.containsKey(searchRoll)) {
+            System.out.println("Marks: " + marks.get(searchRoll));
+        } else {
+            System.out.println("Student not found");
+        }
+
+        sc.close();
+    }
+}
+
+OUTPUT:
+
+3
+101 85
+102 90
+103 78
+102
+
+Marks: 90

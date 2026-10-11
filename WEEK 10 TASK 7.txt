@@ -1,0 +1,34 @@
+PROGRAM :
+
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        TreeSet<Integer> marks = new TreeSet<>();
+
+        for (int i = 0; i < n; i++) {
+            marks.add(sc.nextInt());
+        }
+
+        System.out.println("Unique Marks in Ascending Order:");
+        for (int mark : marks) {
+            System.out.println(mark);
+        }
+
+        sc.close();
+    }
+}
+
+OUTPUT:
+
+6
+85 90 75 85 60 90
+Unique Marks in Ascending Order:
+60
+75
+85
+90

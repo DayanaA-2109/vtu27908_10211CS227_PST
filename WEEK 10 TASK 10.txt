@@ -1,0 +1,54 @@
+PROGRAM :
+
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        HashMap<String, String> contacts = new HashMap<>();
+
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        for (int i = 0; i < n; i++) {
+            String name = sc.nextLine();
+            String phone = sc.nextLine();
+            contacts.put(name, phone);
+        }
+
+        String searchName = sc.nextLine();
+
+        if (contacts.containsKey(searchName)) {
+            System.out.println("Phone Number: " + contacts.get(searchName));
+        } else {
+            System.out.println("Contact not found");
+        }
+
+        String updateName = sc.nextLine();
+
+        if (contacts.containsKey(updateName)) {
+            String newPhone = sc.nextLine();
+            contacts.put(updateName, newPhone);
+            System.out.println("Contact Updated: " + updateName
+                    + " " + contacts.get(updateName));
+        } else {
+            System.out.println("Contact not found");
+        }
+
+        sc.close();
+    }
+}
+
+OUTPUT:
+
+3
+Arun
+9876543210
+Priya
+9876501234
+Kumar
+9123456780
+Priya
+Priya
+9000011111

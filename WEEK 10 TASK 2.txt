@@ -1,0 +1,48 @@
+PROGRAM :
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Integer> marks = new ArrayList<>();
+
+        System.out.println("Enter marks (-1 to stop):");
+
+        while (true) {
+            int mark = sc.nextInt();
+
+            if (mark == -1) {
+                break;
+            }
+
+            marks.add(mark);
+        }
+
+        System.out.println("Student Marks:");
+
+        for (int i = 0; i < marks.size(); i++) {
+            System.out.println("Student " + (i + 1) + ": " + marks.get(i));
+        }
+
+        System.out.println("Total Students: " + marks.size());
+
+        sc.close();
+    }
+}
+
+OUTPUT:
+
+85
+90
+76
+88
+-1
+
+Enter marks (-1 to stop):
+Student Marks:
+Student 1: 85
+Student 2: 90
+Student 3: 76
+Student 4: 88
+Total Students: 4
