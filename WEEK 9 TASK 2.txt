@@ -1,0 +1,116 @@
+PROGRAM :
+
+
+import java.util.*;
+
+class Vehicle {
+    protected double rate;
+
+    public Vehicle(double rate) {
+        this.rate = rate;
+    }
+
+    public double calculateFare(double distance) {
+        return rate * distance;
+    }
+}
+
+class Bike extends Vehicle {
+    public Bike() {
+        super(5);
+    }
+}
+
+class Auto extends Vehicle {
+    public Auto() {
+        super(12);
+    }
+}
+
+class Cab extends Vehicle {
+    public Cab() {
+        super(12);
+    }
+
+    @Override
+    public double calculateFare(double distance) {
+        return rate * distance;
+    }
+}
+
+class Driver {
+    private String name;
+
+    public Driver(String name) {
+        this.name = name;
+    }
+}
+
+class Rider {
+    private String name;
+
+    public Rider(String name) {
+        this.name = name;
+    }
+}
+
+class Trip {
+    private Vehicle vehicle;
+    private double distance;
+
+    public Trip(Vehicle vehicle, double distance) {
+        if (vehicle == null || distance <= 0) {
+            throw new IllegalArgumentException("Invalid booking");
+        }
+        this.vehicle = vehicle;
+        this.distance = distance;
+    }
+
+    public double getFare() {
+        return vehicle.calculateFare(distance);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            String type = sc.next();
+            double distance = sc.nextDouble();
+
+            try {
+                Vehicle vehicle;
+
+                switch (type.toLowerCase()) {
+                    case "bike":
+                        vehicle = new Bike();
+                        break;
+                    case "auto":
+                        vehicle = new Auto();
+                        break;
+                    case "cab":
+                        vehicle = new Cab();
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Invalid ride type");
+                }
+
+                Trip trip = new Trip(vehicle, distance);
+                System.out.println((int) trip.getFare());
+
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid booking");
+            }
+        }
+
+        sc.close();
+    }
+}
+
+OUTPUT :
+
+50
+180
+96

@@ -1,0 +1,99 @@
+PROGRAM :
+
+
+
+import java.util.*;
+
+class Vehicle {
+    protected String vehicleNumber;
+    protected double rentPerDay;
+
+    public Vehicle(String vehicleNumber, double rentPerDay) {
+        this.vehicleNumber = vehicleNumber;
+        this.rentPerDay = rentPerDay;
+    }
+
+    public double calculateRent(int days) {
+        return rentPerDay * days;
+    }
+}
+
+class Car extends Vehicle {
+    public Car(String vehicleNumber, double rentPerDay) {
+        super(vehicleNumber, rentPerDay);
+    }
+
+    @Override
+    public double calculateRent(int days) {
+        return rentPerDay * days;
+    }
+}
+
+class Bike extends Vehicle {
+    public Bike(String vehicleNumber, double rentPerDay) {
+        super(vehicleNumber, rentPerDay);
+    }
+
+    @Override
+    public double calculateRent(int days) {
+        return rentPerDay * days * 0.90;
+    }
+}
+
+class Truck extends Vehicle {
+    public Truck(String vehicleNumber, double rentPerDay) {
+        super(vehicleNumber, rentPerDay);
+    }
+
+    @Override
+    public double calculateRent(int days) {
+        return rentPerDay * days * 1.20;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            int type = sc.nextInt();
+            String vehicleNumber = sc.next();
+            double rentPerDay = sc.nextDouble();
+            int days = sc.nextInt();
+
+            Vehicle vehicle;
+
+            switch (type) {
+                case 1:
+                    vehicle = new Car(vehicleNumber, rentPerDay);
+                    break;
+                case 2:
+                    vehicle = new Bike(vehicleNumber, rentPerDay);
+                    break;
+                case 3:
+                    vehicle = new Truck(vehicleNumber, rentPerDay);
+                    break;
+                default:
+                    continue;
+            }
+
+            System.out.printf("%s %.2f%n",
+                    vehicleNumber, vehicle.calculateRent(days));
+        }
+
+        sc.close();
+    }
+}
+
+ Input
+3
+1 CAR101 2000 3
+2 BIKE201 500 4
+3 TRUCK301 3000 2
+
+ Output
+CAR101 6000.00
+BIKE201 1800.00
+TRUCK301 7200.00
