@@ -1,0 +1,52 @@
+PROGRAM :
+
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        Map<String, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < n; i++) {
+            String hashtag = sc.next();
+            map.put(hashtag, map.getOrDefault(hashtag, 0) + 1);
+        }
+
+        List<String> hashtags = new ArrayList<>(map.keySet());
+
+        hashtags.sort((a, b) -> {
+            if (!map.get(a).equals(map.get(b))) {
+                return map.get(b) - map.get(a);
+            }
+            return a.compareTo(b);
+        });
+
+        for (String hashtag : hashtags) {
+            System.out.println(hashtag + " " + map.get(hashtag));
+        }
+
+        sc.close();
+    }
+}
+
+
+I/O:
+
+8
+#Java
+#Python
+#Java
+#AI
+#Python
+#Java
+#AI
+#C
+
+
+#Java 3
+#AI 2
+#Python 2
+#C 1
